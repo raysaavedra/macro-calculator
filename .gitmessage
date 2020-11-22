@@ -1,0 +1,40 @@
+# <emoji>  <subject> (Maximum 50 Characters)
+
+
+# Add Information
+# Explain why this change is being made (If applied, this commit will...)
+
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: BRA-001
+
+# --- COMMIT END ---
+# Type can be:
+#    :new:               (new feature, add module)
+#    :bug:               (bug fix)
+#    :rocket:            (updates)
+#    :fire:              (Removing code or files.)
+#    :truck:             (Moving or renaming files.)
+#    :no_entry_sign:     (Admin/backoffice updates)
+#    :closed_book:       (Coding standard)
+#    :zap:               (Optimization)
+#    :guardsman:         (Admin/backoffice updates)
+#    :recycle:           (cleanups, updating grunt tasks)
+#    :wrench:            (environment, requirements)
+#    :bulb:              (Documentation)
+#    :whale:             (Docker)
+#    :white_check_mark:  (adding or refactoring tests)
+# --------------------
+# Remember to:
+#    - Use the imperative mood in the subject line
+#    - Do not end the subject line with a period
+#    - Separate subject from body with a blank line
+#    - Use the body to explain what and why vs. how
+#    - Can use multiple lines with "-" for bullet points in body
+# --------------------
+# Full Example:
+# :new: Login API
+#
+# Serve as entry point for app
+#
+# BRA-001
