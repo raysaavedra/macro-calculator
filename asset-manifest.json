@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/macro-calculator/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/macro-calculator/static/js/main.c2c8bcfd.chunk.js",
-    "main.js.map": "/macro-calculator/static/js/main.c2c8bcfd.chunk.js.map",
+    "main.js": "/macro-calculator/static/js/main.f35c0323.chunk.js",
+    "main.js.map": "/macro-calculator/static/js/main.f35c0323.chunk.js.map",
     "runtime-main.js": "/macro-calculator/static/js/runtime-main.60a0588a.js",
     "runtime-main.js.map": "/macro-calculator/static/js/runtime-main.60a0588a.js.map",
-    "static/js/2.623ce6be.chunk.js": "/macro-calculator/static/js/2.623ce6be.chunk.js",
-    "static/js/2.623ce6be.chunk.js.map": "/macro-calculator/static/js/2.623ce6be.chunk.js.map",
+    "static/js/2.91ac0cdc.chunk.js": "/macro-calculator/static/js/2.91ac0cdc.chunk.js",
+    "static/js/2.91ac0cdc.chunk.js.map": "/macro-calculator/static/js/2.91ac0cdc.chunk.js.map",
     "static/js/3.e1b508c5.chunk.js": "/macro-calculator/static/js/3.e1b508c5.chunk.js",
     "static/js/3.e1b508c5.chunk.js.map": "/macro-calculator/static/js/3.e1b508c5.chunk.js.map",
     "index.html": "/macro-calculator/index.html",
     "static/css/main.ab7136cd.chunk.css.map": "/macro-calculator/static/css/main.ab7136cd.chunk.css.map",
-    "static/js/2.623ce6be.chunk.js.LICENSE.txt": "/macro-calculator/static/js/2.623ce6be.chunk.js.LICENSE.txt"
+    "static/js/2.91ac0cdc.chunk.js.LICENSE.txt": "/macro-calculator/static/js/2.91ac0cdc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.60a0588a.js",
-    "static/js/2.623ce6be.chunk.js",
+    "static/js/2.91ac0cdc.chunk.js",
     "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.c2c8bcfd.chunk.js"
+    "static/js/main.f35c0323.chunk.js"
   ]
 }
