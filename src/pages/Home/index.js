@@ -152,226 +152,247 @@ const Home = () => {
     <Container className={classes.root}>
       <Grid
         container
-        alignItems="flex-start"
-        justify="center"
+        direction="column"
         className={classes.container}
-        spacing={2}
+        spacing={4}
       >
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Grid container direction="column" spacing={3}>
-            <Grid item>
-              <Typography variant="body1" className={classes.blackBoldText}>
-                Input values to calculate your macros
-              </Typography>
-            </Grid>
+        <Grid item>
+          <Typography variant="h4" className={classes.blackBoldText}>
+            Macro Calculator
+          </Typography>
+          <Typography variant="body2">
+            This calculator will determine your daily caloric need based from
+            the values you entered.
+          </Typography>
+          <Typography variant="body2">
+            This will also calculate your macros.
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Grid container alignItems="flex-start" justify="center" spacing={2}>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Grid container direction="column" spacing={3}>
+                <Grid item>
+                  <Typography variant="body1" className={classes.blackBoldText}>
+                    Input values to calculate your macros
+                  </Typography>
+                </Grid>
 
-            <Grid item>
-              <TextField label="Age" value={age} onChange={handleAgeChange} />
-            </Grid>
-
-            <Grid item>
-              <FormControl>
-                <Box mb={1}>
-                  <FormLabel component="legend">Gender</FormLabel>
-                </Box>
-                <RadioGroup
-                  aria-label="gender"
-                  value={gender}
-                  onChange={handleGenderChange}
-                  style={{
-                    flexDirection: "row",
-                  }}
-                >
-                  <FormControlLabel
-                    value={constants.MALE}
-                    control={<Radio />}
-                    label="Male"
+                <Grid item>
+                  <TextField
+                    label="Age"
+                    value={age}
+                    onChange={handleAgeChange}
                   />
-                  <FormControlLabel
-                    value={constants.FEMALE}
-                    control={<Radio />}
-                    label="Female"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </Grid>
+                </Grid>
 
-            <Grid item>
-              <FormControl>
-                <Box mb={1}>
-                  <FormLabel component="legend">Height</FormLabel>
-                </Box>
-                <Grid container spacing={1}>
-                  {useMetricInHeight ? (
-                    <Grid item>
-                      <TextField
-                        label="Centimeters"
-                        value={heightCm}
-                        onChange={handleHeightCmChange}
+                <Grid item>
+                  <FormControl>
+                    <Box mb={1}>
+                      <FormLabel component="legend">Gender</FormLabel>
+                    </Box>
+                    <RadioGroup
+                      aria-label="gender"
+                      value={gender}
+                      onChange={handleGenderChange}
+                      style={{
+                        flexDirection: "row",
+                      }}
+                    >
+                      <FormControlLabel
+                        value={constants.MALE}
+                        control={<Radio />}
+                        label="Male"
                       />
+                      <FormControlLabel
+                        value={constants.FEMALE}
+                        control={<Radio />}
+                        label="Female"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+
+                <Grid item>
+                  <FormControl>
+                    <Box mb={1}>
+                      <FormLabel component="legend">Height</FormLabel>
+                    </Box>
+                    <Grid container spacing={1}>
+                      {useMetricInHeight ? (
+                        <Grid item>
+                          <TextField
+                            label="Centimeters"
+                            value={heightCm}
+                            onChange={handleHeightCmChange}
+                          />
+                        </Grid>
+                      ) : (
+                        <>
+                          <Grid item>
+                            <TextField
+                              label="Feet"
+                              value={heightFt}
+                              onChange={handleHeightFtChange}
+                            />
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              label="Inches"
+                              value={heightIn}
+                              onChange={handleHeightInChange}
+                            />
+                          </Grid>
+                        </>
+                      )}
+
+                      <Grid item>
+                        <Tooltip
+                          title={
+                            useMetricInHeight
+                              ? "Switch to feet and inches"
+                              : "Switch to cm"
+                          }
+                        >
+                          <IconButton onClick={handleHeightSwitch}>
+                            <CachedIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </Grid>
                     </Grid>
-                  ) : (
-                    <>
+                  </FormControl>
+                </Grid>
+
+                <Grid item>
+                  <FormControl>
+                    <Box mb={1}>
+                      <FormLabel component="legend">Weight</FormLabel>
+                    </Box>
+                    <Grid container spacing={1}>
                       <Grid item>
                         <TextField
-                          label="Feet"
-                          value={heightFt}
-                          onChange={handleHeightFtChange}
+                          label={
+                            useMetricInWeight
+                              ? "Kilograms (kg)"
+                              : "Pounds (lbs)"
+                          }
+                          value={weight}
+                          onChange={handleWeighChange}
                         />
                       </Grid>
                       <Grid item>
-                        <TextField
-                          label="Inches"
-                          value={heightIn}
-                          onChange={handleHeightInChange}
-                        />
+                        <Tooltip
+                          title={
+                            useMetricInWeight
+                              ? "Switch to pounds (lbs)"
+                              : "Switch to kilogram (kg)"
+                          }
+                        >
+                          <IconButton onClick={handleWeightSwitch}>
+                            <CachedIcon />
+                          </IconButton>
+                        </Tooltip>
                       </Grid>
-                    </>
-                  )}
-
-                  <Grid item>
-                    <Tooltip
-                      title={
-                        useMetricInHeight
-                          ? "Switch to feet and inches"
-                          : "Switch to cm"
-                      }
-                    >
-                      <IconButton onClick={handleHeightSwitch}>
-                        <CachedIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </Grid>
+                    </Grid>
+                  </FormControl>
                 </Grid>
-              </FormControl>
-            </Grid>
 
-            <Grid item>
-              <FormControl>
-                <Box mb={1}>
-                  <FormLabel component="legend">Weight</FormLabel>
-                </Box>
-                <Grid container spacing={1}>
-                  <Grid item>
-                    <TextField
-                      label={
-                        useMetricInWeight ? "Kilograms (kg)" : "Pounds (lbs)"
-                      }
-                      value={weight}
-                      onChange={handleWeighChange}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Tooltip
-                      title={
-                        useMetricInWeight
-                          ? "Switch to pounds (lbs)"
-                          : "Switch to kilogram (kg)"
-                      }
-                    >
-                      <IconButton onClick={handleWeightSwitch}>
-                        <CachedIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </Grid>
-                </Grid>
-              </FormControl>
-            </Grid>
+                <Grid item>
+                  <FormControl>
+                    <Box mb={1}>
+                      <FormLabel component="legend">
+                        Select Activity Level
+                      </FormLabel>
+                    </Box>
 
-            <Grid item>
-              <FormControl>
-                <Box mb={1}>
-                  <FormLabel component="legend">
-                    Select Activity Level
-                  </FormLabel>
-                </Box>
-
-                <Select
-                  native
-                  defaultValue={activityLevel}
-                  onChange={handleActivityLevelChange}
-                >
-                  {constants.ACTIVITY_LIST.map((val, index) => {
-                    return (
-                      <option key={index} value={val.value}>
-                        {`${val.label} - ${val.description}`}
-                      </option>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid item>
-              <FormControl>
-                <Box mb={1}>
-                  <FormLabel component="legend">Weight Goal</FormLabel>
-                </Box>
-
-                <Grid container spacing={2}>
-                  <Grid item>
                     <Select
                       native
-                      defaultValue={weightGoal}
-                      onChange={handleWeightGoalChange}
+                      defaultValue={activityLevel}
+                      onChange={handleActivityLevelChange}
                     >
-                      <option value={constants.LOOSE}>Loose</option>
-                      <option value={constants.GAIN}>Gain</option>
+                      {constants.ACTIVITY_LIST.map((val, index) => {
+                        return (
+                          <option key={index} value={val.value}>
+                            {`${val.label} - ${val.description}`}
+                          </option>
+                        );
+                      })}
                     </Select>
-                  </Grid>
-
-                  <Grid item>
-                    <Box
-                      ml={3}
-                      height="100%"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <Typography variant="body1">{`${weightGoalPercent}%`}</Typography>
-                    </Box>
-                  </Grid>
-
-                  <Grid item>
-                    <ButtonGroup
-                      color="primary"
-                      aria-label="outlined primary button group"
-                    >
-                      <Button onClick={handleMinusWeightGoal}>-</Button>
-                      <Button onClick={handleAddWeightGoal}>+</Button>
-                    </ButtonGroup>
-                  </Grid>
+                  </FormControl>
                 </Grid>
 
-                <Box>
-                  <FormHelperText>
-                    {weightGoalPercent === 0
-                      ? `Maintain Weight: ${weight}${
-                          useMetricInWeight ? "kg" : "lbs"
-                        }`
-                      : `Target Weight: ${calculateNewValueFromPercent(
-                          weight,
-                          weightGoalPercent,
-                          weightGoal
-                        )}${useMetricInWeight ? "kg" : "lbs"}`}
-                  </FormHelperText>
-                </Box>
-              </FormControl>
+                <Grid item>
+                  <FormControl>
+                    <Box mb={1}>
+                      <FormLabel component="legend">Weight Goal</FormLabel>
+                    </Box>
+
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <Select
+                          native
+                          defaultValue={weightGoal}
+                          onChange={handleWeightGoalChange}
+                        >
+                          <option value={constants.LOOSE}>Loose</option>
+                          <option value={constants.GAIN}>Gain</option>
+                        </Select>
+                      </Grid>
+
+                      <Grid item>
+                        <Box
+                          ml={3}
+                          height="100%"
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          <Typography variant="body1">{`${weightGoalPercent}%`}</Typography>
+                        </Box>
+                      </Grid>
+
+                      <Grid item>
+                        <ButtonGroup
+                          color="primary"
+                          aria-label="outlined primary button group"
+                        >
+                          <Button onClick={handleMinusWeightGoal}>-</Button>
+                          <Button onClick={handleAddWeightGoal}>+</Button>
+                        </ButtonGroup>
+                      </Grid>
+                    </Grid>
+
+                    <Box>
+                      <FormHelperText>
+                        {weightGoalPercent === 0
+                          ? `Maintain Weight: ${weight}${
+                              useMetricInWeight ? "kg" : "lbs"
+                            }`
+                          : `Target Weight: ${calculateNewValueFromPercent(
+                              weight,
+                              weightGoalPercent,
+                              weightGoal
+                            )}${useMetricInWeight ? "kg" : "lbs"}`}
+                      </FormHelperText>
+                    </Box>
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Results
+                caloriesPerDay={caloriesPerDay.calories}
+                fatInGrams={caloriesPerDay.fat}
+                carbsInGrams={caloriesPerDay.carbs}
+                proteinInGrams={caloriesPerDay.protein}
+                fiberInGrams={caloriesPerDay.fiber}
+                proteinSplit={`${config.ProteinDefaultConversion * 100}%`}
+                fatSplit={`${config.FatDefaultConversion * 100}%`}
+                carbsSplit={`${config.CarbsDefaultConversion * 100}%`}
+              />
             </Grid>
           </Grid>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Results
-            caloriesPerDay={caloriesPerDay.calories}
-            fatInGrams={caloriesPerDay.fat}
-            carbsInGrams={caloriesPerDay.carbs}
-            proteinInGrams={caloriesPerDay.protein}
-            fiberInGrams={caloriesPerDay.fiber}
-            proteinSplit={`${config.ProteinDefaultConversion * 100}%`}
-            fatSplit={`${config.FatDefaultConversion * 100}%`}
-            carbsSplit={`${config.CarbsDefaultConversion * 100}%`}
-          />
         </Grid>
       </Grid>
     </Container>
