@@ -78,7 +78,6 @@ const Home = () => {
   ]);
 
   const handleGenderChange = (e) => {
-    console.log(e.target.value);
     setGender(e.target.value);
   };
 

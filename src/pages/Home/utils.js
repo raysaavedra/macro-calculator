@@ -32,8 +32,6 @@ export const calculateResult = ({
   goalValue,
 }) => {
   let s = +5;
-  console.log("initial weight:", weight);
-  console.log("initial height:", height);
 
   if (gender === constants.FEMALE) s = -161;
 
@@ -41,26 +39,19 @@ export const calculateResult = ({
     height = convertFtInToCm(height[0], height[1]);
   }
 
-  console.log("new height:", height);
-
   if (!useMetricInWeight) {
     weight = convertPoundsToKg(weight);
-    console.log("converted weight:", weight);
   }
 
   let caloriesPerDay = Math.floor(10 * weight + 6.25 * height - 5 * age + s);
-  console.log("calories per day1", caloriesPerDay);
   caloriesPerDay = calculateNewValueFromPercent(
     caloriesPerDay,
     goalValue,
     goal
   );
-  console.log("calories per day2", caloriesPerDay);
   const activityLevelMultiplier =
     constants.ACITIVTY_LEVEL_VALUES[activityLevel];
   caloriesPerDay = Math.floor(caloriesPerDay * activityLevelMultiplier);
-
-  console.log("calories per day3", caloriesPerDay);
 
   const proteinConversion = caloriesPerDay * config.ProteinDefaultConversion;
   const carbsConversion = caloriesPerDay * config.CarbsDefaultConversion;
