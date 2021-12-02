@@ -10,3 +10,4 @@ This calculates your required calories per day. Also calculates your macros need
 ### TODOS:
 
 - able to change daily macros split
+- update to use hooks
